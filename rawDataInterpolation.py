@@ -78,9 +78,9 @@ for index, row in df.iterrows():
         previousValue = df.at[index-1, 'WHEEL_A']
         twoValuesAgo = df.at[index-2, 'WHEEL_A']
 
-        if currentValue < previousValue and previousValue > twoValuesAgo:
+        if currentValue <= previousValue and previousValue >= twoValuesAgo:
             startOfRollover[ODOA] = index-1
-        elif currentValue > previousValue and previousValue < twoValuesAgo:
+        elif currentValue >= previousValue and previousValue <= twoValuesAgo:
             numberOfValuesToChange = index-2 - startOfRollover[ODOA]
             changeInValue = int((df.at[startOfRollover[ODOA], 'WHEEL_A'] - df.at[index-1, 'WHEEL_A']) / (numberOfValuesToChange+1))
             for i in range(numberOfValuesToChange):
@@ -90,9 +90,9 @@ for index, row in df.iterrows():
         previousValue = df.at[index-1, 'WHEEL_B']
         twoValuesAgo = df.at[index-2, 'WHEEL_B']
 
-        if currentValue < previousValue and previousValue > twoValuesAgo:
+        if currentValue <= previousValue and previousValue >= twoValuesAgo:
             startOfRollover[ODOB] = index-1
-        elif currentValue > previousValue and previousValue < twoValuesAgo:
+        elif currentValue >= previousValue and previousValue <= twoValuesAgo:
             numberOfValuesToChange = index-2 - startOfRollover[ODOB]
             changeInValue = int((df.at[startOfRollover[ODOB], 'WHEEL_B'] - df.at[index-1, 'WHEEL_B']) / (numberOfValuesToChange+1))
             for i in range(numberOfValuesToChange):
@@ -102,9 +102,9 @@ for index, row in df.iterrows():
         previousValue = df.at[index-1, 'WHEEL_C']
         twoValuesAgo = df.at[index-2, 'WHEEL_C']
 
-        if currentValue < previousValue and previousValue > twoValuesAgo:
+        if currentValue <= previousValue and previousValue >= twoValuesAgo:
             startOfRollover[ODOC] = index-1
-        elif currentValue > previousValue and previousValue < twoValuesAgo:
+        elif currentValue >= previousValue and previousValue <= twoValuesAgo:
             numberOfValuesToChange = index-2 - startOfRollover[ODOC]
             changeInValue = int((df.at[startOfRollover[ODOC], 'WHEEL_C'] - df.at[index-1, 'WHEEL_C']) / (numberOfValuesToChange+1))
             for i in range(numberOfValuesToChange):
